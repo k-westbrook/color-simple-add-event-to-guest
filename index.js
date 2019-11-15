@@ -6,11 +6,11 @@ exports.handler = (event, context, callback) => {
   const params = {
     TableName: "USER_INFO",
     Key: {
-      "event_id": event.event_id
+      "email": event.email
     },
-    UpdateExpression: "set attendees = :a",
+    UpdateExpression: "set events = :a",
     ExpressionAttributeValues: {
-      ":a": event.attendees
+      ":a": event.events
     },
     ReturnValues: "UPDATED_NEW"
   };
@@ -27,7 +27,7 @@ exports.handler = (event, context, callback) => {
           'Access-Control-Allow-Credentials': true,
         },
         body: {
-          message: JSON.stringify('ERROR, did not add guest.')
+          message: JSON.stringify('ERROR, did not add event.')
         }
       };
       callback(null, data);
