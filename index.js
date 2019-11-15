@@ -18,7 +18,7 @@ exports.handler = (event, context, callback) => {
 
     let recordReturned = data.Attributes;
 
-    if (err || (recordReturned.password !== event.password)) {
+    if (err) {
 
       data = {
         statusCode: 400,
@@ -42,8 +42,8 @@ exports.handler = (event, context, callback) => {
         },
         body: {
 
-          message: JSON.stringify('Successful update to add guest.'),
-          attendees: recordReturned.attendees
+          message: JSON.stringify('Successful update to add event'),
+          events: recordReturned.events
         }
 
       };
